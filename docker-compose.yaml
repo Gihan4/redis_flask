@@ -3,6 +3,7 @@ version: "3.8"
 services:
   flask-app:
     image: gihan4/appredis:latest
+    restart: always
     ports:
       - "5000:5000"  # Map the host port 5000 to the container port 5000
     depends_on:
@@ -10,5 +11,6 @@ services:
 
   redis:
     image: redis:latest
+    restart: always
     ports:
       - "6379:6379"  # Map the host port 6379 to the container port 6379
