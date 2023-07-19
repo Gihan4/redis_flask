@@ -2,15 +2,20 @@ version: "3.8"
 
 services:
   flask-app:
+    # First, try to pull the pre-built image from Docker Hub
     image: gihan4/appredis:latest
     restart: always
     ports:
-      - "5000:5000"  # Map the host port 5000 to the container port 5000
+      - "5000:5000"
     depends_on:
       - redis
+    # If the image is not available on Docker Hub, build it using the Dockerfile in the current directory
+    build: .
+    # Set the following option to 'always' to force rebuilding the image every time you run 'docker-compose up'
+    # build: always
 
   redis:
     image: redis:latest
     restart: always
     ports:
-      - "6379:6379"  # Map the host port 6379 to the container port 6379
+      - "6379:6379" # Map the host port 6379 to the container port 6379
