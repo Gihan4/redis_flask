@@ -3,7 +3,7 @@ version: "3.8"
 services:
   flask-app:
     # First, try to pull the pre-built image from Docker Hub
-    image: gihan4/appredis:latest
+    image: gihan4/k8sapp:latest
     restart: always
     ports:
       - "5000:5000"
